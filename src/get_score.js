@@ -22,28 +22,32 @@ const get_score = function (qustion_answer_map) {
  */
 const get_score_of_one_qustion = function (question_code, answer_str) {
     let score = 0;
+    let right_answer = get_answer(question_code);
+    let point = get_point(question_code);
     //用array转换为set的方式去掉重复答案
-    let set = new Set(answer_str.split(','));
-    set.forEach((it) => {
-        score += compute_point(it, question_code)
-    });
+
+    if(question_code === '3.1' || question_code === '3.2') {
+        if(right_answer.length !== answer_str.length) return 0;
+        let isEqual = true;
+        right_answer.split(',').forEach((it) => {
+            isEqual = isEqual&&(answer_str.indexOf(it) !== -1)
+        })
+
+        score +=  isEqual? point:0;
+    }
+    else {
+        let answer_set = new Set(answer_str.split(','));
+        answer_set.forEach((it) => {
+            score += right_answer.indexOf(it) !== -1 ? point / right_answer.split(',').length : 0;
+        });
+    }
+
     return score;
-}
-
-let compute_point = function (it, question_code) {
-    return is_anwser_right(question_code, it) ? get_point(question_code) / get_answer(question_code).split(',').length : 0;
-
 };
 
-/*
- * is_anwser_right 这是个助手方法，判断提交的答案是正确
- * @parameter question_code 题目的编号，1.1 表示第一大题中第一小题
- * @parameter answer_str 对应提交的答案
- * @ return score 得分
- */
-const is_anwser_right = function is_anwser_right(question_code, answer) {
-    return get_answer(question_code).indexOf(answer) !== -1;
-}
+
+
+
 
 
 
