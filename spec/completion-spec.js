@@ -1,11 +1,9 @@
-let fs = require("fs");
-let {get_answer, get_point} = require('../src/answer');
-let get_score = require('../src/get_score')
+let {get_score,get_answer,get_point} = require('./support/test-helper');
 
 describe('completion', () => {
     describe('answer', () => {
-        it('should be "" for quiestion not exist', () => {
-            expect(get_answer('ab')).toBe('');
+        it('should throw a error for quiestion not exist', () => {
+            expect(()=>get_answer('ab')).toThrowError();
         });
         it('should be "统一建模语言" for quiestion 1.1', () => {
             expect(get_answer('1.1')).toBe('统一建模语言');
@@ -16,15 +14,14 @@ describe('completion', () => {
     });
 
     describe('point', () => {
-
-        it('should be 0 for quiestion not exist ', () => {
-            expect(get_point('ab')).toBe(0);
+        it('should throw an error  for quiestion not exist ', () => {
+            expect(()=>get_point('ab')).toThrowError();
         });
         it('should be 5 for answer 1.1" ', () => {
             expect(get_point('1.1')).toBe(5);
         });
         it('should be 15 for answer 1.2', () => {
-            expect(get_point('1.2')).toBe(15);
+            expect(get_point('1.2')).toBe(5);
         })
     });
 

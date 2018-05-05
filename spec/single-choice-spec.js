@@ -1,7 +1,5 @@
-let fs = require("fs");
-let {get_answer, get_point} = require('../src/answer');
-let get_score = require('../src/get_score')
 
+let {get_score,get_answer,get_point} = require('./support/test-helper');
 describe('single-choice', () => {
     describe('answer', () => {
        it('should be B for quiestion 2.1', () => {
