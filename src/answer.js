@@ -4,6 +4,8 @@ const answers = {
     1.2: {answer:'封装性,继承性,多态性',point:15},
     2.1:{answer:'B',point:10},
     2.2:{answer:'A',point:10},
+    3.1:{answer:'A,B,D',point:10},
+    3.2:{answer:'A,B,C',point:10},
 }
 const get_answer = function (qustionCode) {
     return (answers[qustionCode] ? answers[qustionCode].answer :'');
