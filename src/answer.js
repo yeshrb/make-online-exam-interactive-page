@@ -11,6 +11,8 @@ const answers = {
         point: 10
     },
     3.2: {answer: 'A,B,C', point: 10},
+    4.1: {answer: 'false', point: 10},
+    4.2: {answer: 'true', point: 10},
 }
 const get_answer = function (qustionCode) {
     return (answers[qustionCode] ? answers[qustionCode].answer : '');
