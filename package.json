@@ -7,10 +7,7 @@
     "start": "node app.js",
     "test": "node run-tests.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tw-online-quiz/exam-paper.git"
-  },
+  "repository": "git+https://github.com/tw-online-quiz/exam-paper.git",
   "author": "ThoughtWorks School",
   "license": "GPL-3.0",
   "bugs": {
