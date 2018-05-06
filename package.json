@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "node run-tests.js"
+    "test": "node run-tests.js",
+    "build": "webpack"
   },
   "repository": "git+https://github.com/tw-online-quiz/exam-paper.git",
   "author": "ThoughtWorks School",
@@ -15,6 +16,10 @@
   },
   "homepage": "https://school.thoughtworks.cn",
   "devDependencies": {
-    "jasmine": "^2.6.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "jasmine": "^2.6.0",
+    "webpack": "^4.7.0",
+    "webpack-cli": "^2.1.2"
   }
 }

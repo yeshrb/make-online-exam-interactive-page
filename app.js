@@ -1,8 +1,9 @@
 // const main = require('./main/main');
 //
 // main();
-//const {answers} = require('./src/answer');
+const {answers} = require('./src/answer');
 var anwser_map = {};
+var q_a_map = {};
 window.onload = function () {
     window.document.getElementById("submit").onclick = submit;
     var elements_input = document.getElementsByTagName('input');
@@ -31,20 +32,23 @@ window.onload = function () {
 }
 var submit = function () {
     //let score = answers.get_score(anwser_map);
-    alert('hello')
-    console.log(anwser_map);
+
+    console.log(q_a_map);
 
 }
 
 let idreg = /(^\d+\.\d+)\.\d+$/;
 let getTextData = function (element) {
-    let matches = element.id.match(idreg);
-    if (matches) {
-        anwser_map[matches[1]]
-            ? anwser_map[matches[1]] += ','+ element.value
-            : anwser_map[matches[1]] = element.value;
-    }
+    // let matches = element.id.match(idreg);
+    // if (matches) {
+    //     anwser_map[matches[1]]
+    //         ? anwser_map[matches[1]] += ','+ element.value
+    //         : anwser_map[matches[1]] = element.value;
+    // }
+    q_a_map[element.id]=element.value;
+
 }
+
 let getRadioData = function (element) {
     if(element.checked)
         getTextData(element);
