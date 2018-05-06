@@ -1,7 +1,7 @@
 // const main = require('./main/main');
 //
 // main();
-const {answers} = require('./src/answer');
+//const {answers} = require('./src/answer');
 var anwser_map = {};
 var q_a_map = {};
 window.onload = function () {
@@ -21,6 +21,7 @@ window.onload = function () {
             elements_input[i].onblur = ()=> {getCheckBoxData(elements_input[i])}
             continue;
         }
+        //elements_input[i].onfocus = ()=>{clearData(elements_input[i])}
     }
 
     let elements_textarea =  document.getElementsByTagName('textarea');
@@ -49,13 +50,19 @@ let getTextData = function (element) {
 
 }
 
+
 let getRadioData = function (element) {
     if(element.checked)
         getTextData(element);
+    else{
+        q_a_map[element.id]=undefined;
+    }
 }
 let getCheckBoxData = function (element) {
     if(element.checked)
         getTextData(element);
 }
-
+let clearData = function (element) {
+    q_a_map[element.id]='';
+}
 
