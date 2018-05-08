@@ -1,22 +1,30 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
 function resolve (dir) {
     return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
-    entry: './app.js',
+    entry: {app:'./app.js'},
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: 'app.js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: "/"
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src'),
             "~": resolve("src/components")
         }
     },
+    devtool: 'inline-source-map',
+    // devServer: {
+    //     contentBase: './dist',
+    //     host:true
+    // },
     module: {
         rules: [
             {
@@ -25,7 +33,12 @@ module.exports = {
                 include: [resolve('src'), resolve('test')]
             },
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({title:'UML Test',template: './index.html'}),
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+    ]
 };
 
 

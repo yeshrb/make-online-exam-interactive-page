@@ -26,13 +26,22 @@ describe('completion', () => {
     });
 
     describe('get_score', () => {
+        it('should be 0 for answer for 1.1 is ""', () => {
+            expect(get_score({1.1:''})).toBe(0);
+        });
         it('should be 5 for answer for 1.1 is "统一建模语言"', () => {
             expect(get_score({1.1:'统一建模语言'})).toBe(5);
         });
         it('should be 0 for answer for 1.1 is "统建语言"', () => {
             expect(get_score({1.1: '统建语言'})).toBe(0);
         });
+
+        it('should be 0 for answer for 1.2 is ""', () => {
+            expect(get_score({1.2: ''})).toBe(0);
+        });
+
         it('should be 15 for answer for 1.2 is "封装性,继承性,多态性"', () => {
+
             expect(get_score({1.2: '封装性,继承性,多态性'})).toBe(15);
         });
         it('should be 10 for answer for 1.2 is "封装性,多态性"', () => {

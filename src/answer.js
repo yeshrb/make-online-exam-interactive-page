@@ -48,6 +48,7 @@ const POINT_SHORT_ANSWER = 20;
 
 let compute_point_partial_item_equal = function (right_answer, point, answer_str) {
     let score = 0;
+    if (!answer_str) return 0;
     //用array转换为set的方式去掉重复答案
     let answer_set = new Set(answer_str.split(','));
     answer_set.forEach((it) => {
